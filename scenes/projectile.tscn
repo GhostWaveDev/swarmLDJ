@@ -1,0 +1,27 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://sprites/boobyTraps/shoot/shootBall1.png" type="Texture" id=1]
+[ext_resource path="res://sprites/boobyTraps/shoot/shootBall3.png" type="Texture" id=2]
+[ext_resource path="res://sprites/boobyTraps/shoot/shootBall4.png" type="Texture" id=3]
+[ext_resource path="res://sprites/boobyTraps/shoot/shootBall2.png" type="Texture" id=4]
+[ext_resource path="res://scripts/boobyTraps/projectile.gd" type="Script" id=5]
+[ext_resource path="res://scenes/killzone.tscn" type="PackedScene" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[node name="projectile" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+frame = 2
+playing = true
+
+[node name="killzone" parent="." instance=ExtResource( 6 )]
+collisionShapeSize = Vector2( 2, 2 )
